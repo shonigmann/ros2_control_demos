@@ -17,3 +17,32 @@ forward_position_controller:
       - joint1
       - joint2
     interface_name: position
+    # testing to see if the forward_position_controller gets the undeclared parameters
+    gains:
+      joint1:
+        p: 1.0
+        i: 2.0
+        d: 3.0
+    limits:
+      joint1:
+        has_position_limits: true
+        x_min: 1.0
+        x_max: 2.0
+        
+#testing to see if any nodes get the undeclared parameters
+/**:
+  ros__parameters:
+    test_1:
+      - test1
+      - test2
+    test_2: test
+    test_gains:
+      test_3:
+        p: 1.0
+        i: 2.0
+        d: 3.0
+    test_limits:
+      test_4:
+        has_position_limits: true
+        x_min: 1.0
+        x_max: 2.0
