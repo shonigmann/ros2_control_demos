@@ -53,6 +53,7 @@ def generate_launch_description():
     control_node = Node(
         package="controller_manager",
         executable="ros2_control_node",
+        name="renamed_controller_manager",
         parameters=[robot_description, robot_controllers],
         remappings=[
             (
@@ -82,13 +83,13 @@ def generate_launch_description():
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
+        arguments=["joint_state_broadcaster", "--controller-manager", "/renamed_controller_manager"],
     )
 
     robot_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["forward_position_controller", "-c", "/controller_manager"],
+        arguments=["forward_position_controller", "-c", "/renamed_controller_manager"],
     )
 
     # Delay rviz start after `joint_state_broadcaster`
